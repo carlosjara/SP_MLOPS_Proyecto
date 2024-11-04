@@ -13,14 +13,19 @@ cols = ['age', 'sex', 'bmi', 'children', 'smoker', 'region']
 def home():
     return render_template("home.html")
 
+@app.route('/health', methods=["GET"])
+def health():
+    return "HEALTH OK"
+
 @app.route('/predict',methods=['POST'])
 def predict():
     int_features = [x for x in request.form.values()]
     final = np.array(int_features)
     data_unseen = pd.DataFrame([final], columns = cols)
     prediction = predict_model(model, data=data_unseen, round = 0)
-    prediction = int(prediction.Label[0])
-    return render_template('home.html',pred='Expected Bill will be {}'.format(prediction))
+    print(prediction)
+    prediction = int(prediction.loc[0, 'prediction_label'])
+    return render_template('home.html',pred='Expected Bill will be ${} anually'.format(prediction))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
@@ -31,4 +36,4 @@ def predict_api():
     return jsonify(output)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
