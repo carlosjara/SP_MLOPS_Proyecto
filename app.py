@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 model = load_model('models/deployment_20231111')
 cols = ['age', 'sex', 'bmi', 'children', 'smoker', 'region']
-
+-t
 @app.route('/')
 def home():
     return render_template("home.html")
