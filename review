@@ -1,0 +1,20 @@
+#Notes
+
+Una vez se tiene el proyecto corriendo en local (con docker run)
+se debe subir a azure - registrarse y crear el container registry - 
+de donde se saca en settings access keys el usuario y la contrasena 
+SPpycaret
+p3SWkJUCs9QM95nO3RI1fGmGPub/+lqOXt/lZLECWp+ACRDJvIj8
+
+en local se debe hacer login al container registry con 
+docker login sppycaret.azurecr.io
+usuario y contrasena 
+
+despues hacer el docker build para subir (push)
+docker build -t sppycaret.azurecr.io/pycaret-sample:lastest 
+
+despues crear una web app (pay as you go) que use la imagen del container registry
+
+
+-----
+Para automatizar , se pueden usar los actions de github
