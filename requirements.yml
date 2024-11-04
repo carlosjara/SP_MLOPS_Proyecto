@@ -1,0 +1,11 @@
+name: seminario_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9-slim
+    - pip
+  - pip:
+    - pycaret==3.3.1
+    - Flask==3.0.0
+    - Jinja2==3.1.2
